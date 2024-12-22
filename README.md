@@ -8,8 +8,6 @@ Twitter-Unfollow
 
 > Paste this into the Developer Console and run it
 
-
-// Last Updated: 30 October 2023
 (() => {
   const $followButtons = '[data-testid$="-unfollow"]';
   const $confirmButton = '[data-testid="confirmationSheetConfirm"]';
@@ -45,10 +43,10 @@ Twitter-Unfollow
     scrollToTheBottom();
     await sleep({ seconds: 1 });
 
-    const followButtons = Array.from(document.querySelectorAll($followButtons));
-    const followButtonsWereFound = followButtons.length > 0;
-
-    if (followButtonsWereFound) {
+   const followButtons = Array.from(document.querySelectorAll($followButtons));
+   const followButtonsWereFound = followButtons.length > 0;
+   
+   if (followButtonsWereFound) {
       await unfollowAll(followButtons);
       await sleep({ seconds: 2 });
       return nextBatch();
@@ -56,7 +54,7 @@ Twitter-Unfollow
       addNewRetry();
     }
 
-    if (retryLimitReached()) {
+   if (retryLimitReached()) {
       console.log(`NO ACCOUNTS FOUND, SO I THINK WE'RE DONE`);
       console.log(`RELOAD PAGE AND RE-RUN SCRIPT IF ANY WERE MISSED`);
     } else {
